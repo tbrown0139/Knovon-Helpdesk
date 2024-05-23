@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="apple-touch-icon" href="https://ok12static.oktacdn.com/fs/bco/1/fs04mdx4j4P0MX6MQ5d7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,6 +18,15 @@
             align-items: center;
             height: 100vh;
             background-color: #f8f9fa;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #ff4d4d;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 1.2em;
         }
 
         .logo {
@@ -31,6 +42,7 @@
             font-size: 2em;
             margin-bottom: 20px;
             color: #333;
+            text-align: center;
         }
 
         .container {
@@ -81,9 +93,24 @@
             font-size: 0.8em;
             color: #aaa;
         }
+
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .box {
+                width: 80%;
+                margin: 10px 0;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="banner">
+        Authorized Users Only
+    </div>
     <div class="logo">
         <img src="https://ok12static.oktacdn.com/fs/bco/1/fs04mdx4j4P0MX6MQ5d7" alt="Knovon Logo">
     </div>
