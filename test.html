@@ -89,6 +89,13 @@
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
         }
 
+        .box.disabled {
+            background-color: #e0e0e0;
+            color: #a0a0a0;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
         .footer {
             margin-top: 20px;
             font-size: 0.8em;
@@ -138,11 +145,11 @@
             <h2>Employee</h2>
             <p>The people who work for us.</p>
         </a>
-        <a class="box" id="partner" href="https://knovon.org" target="_blank">
+        <div class="box disabled" id="partner">
             <i class="fas fa-handshake"></i>
             <h2>Partner</h2>
             <p>Our clients and customers.</p>
-        </a>
+        </div>
     </div>
     <div class="footer">
         &copy; 2024 Knovon. All rights reserved.
