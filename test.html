@@ -26,6 +26,12 @@
             height: auto;
         }
 
+        .header {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
         .container {
             display: flex;
             justify-content: space-around;
@@ -41,6 +47,9 @@
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
+            margin: 0 10px;
+            text-decoration: none;
+            color: inherit;
         }
 
         .box img {
@@ -69,22 +78,25 @@
     <div class="logo">
         <img src="logo.png" alt="Company Logo">
     </div>
+    <div class="header">
+        Select an Application
+    </div>
     <div class="container">
-        <div class="box" id="vendor">
+        <a class="box" id="vendor" href="https://knovon.org" target="_blank">
             <img src="vendor-icon.png" alt="Vendor Icon">
             <h2>Vendor</h2>
             <p>Our service providers and partners.</p>
-        </div>
-        <div class="box" id="employee">
+        </a>
+        <a class="box" id="employee" href="https://knovon.org" target="_blank">
             <img src="employee-icon.png" alt="Employee Icon">
             <h2>Employee</h2>
             <p>The people who work for us.</p>
-        </div>
-        <div class="box" id="partner">
+        </a>
+        <a class="box" id="partner" href="https://knovon.org" target="_blank">
             <img src="partner-icon.png" alt="Partner Icon">
             <h2>Partner</h2>
             <p>Our clients and customers.</p>
-        </div>
+        </a>
     </div>
 </body>
 </html>
