@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="apple-touch-icon" href="https://ok12static.oktacdn.com/fs/bco/1/fs04mdx4j4P0MX6MQ5d7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <style>
@@ -106,6 +107,15 @@
             }
         }
     </style>
+    <script>
+        function showEmployeeModal() {
+            $('#employeeModal').modal('show');
+        }
+
+        function redirectToZeroTrust() {
+            window.location.href = "http://1.1.1.1";
+        }
+    </script>
 </head>
 <body>
     <div class="banner">
@@ -123,7 +133,7 @@
             <h2>Vendor</h2>
             <p>Our service providers and partners.</p>
         </a>
-        <a class="box" id="employee" href="https://knovon.org" target="_blank">
+        <a class="box" id="employee" href="#" onclick="showEmployeeModal()">
             <i class="fas fa-users"></i>
             <h2>Employee</h2>
             <p>The people who work for us.</p>
@@ -137,5 +147,29 @@
     <div class="footer">
         &copy; 2024 Knovon. All rights reserved.
     </div>
+
+    <!-- Bootstrap Modal -->
+    <div class="modal fade" id="employeeModal" tabindex="-1" aria-labelledby="employeeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="employeeModalLabel">Notice</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Please enable ZeroTrust to continue.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="redirectToZeroTrust()">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
