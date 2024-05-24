@@ -1,4 +1,260 @@
-                    <td class="manager-name">Michael Brown</td>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knovon for Business Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="apple-touch-icon" href="https://ok12static.oktacdn.com/fs/bco/1/fs04mdx4j4P0MX6MQ5d7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #ff4d4d;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 1.2em;
+            box-sizing: border-box;
+            word-wrap: break-word;
+        }
+
+        .logo {
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 150px;
+            height: auto;
+        }
+
+        .header {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        .table-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        .table thead {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .table td, .table th {
+            vertical-align: middle;
+        }
+
+        .status-active {
+            color: green;
+            font-weight: bold;
+        }
+
+        .status-inactive {
+            color: red;
+            font-weight: bold;
+        }
+
+        .status-suspended {
+            color: orange;
+            font-weight: bold;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #aaa;
+        }
+
+        .action-buttons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-container {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const tableRows = document.querySelectorAll('.table tbody tr');
+
+            searchInput.addEventListener('keyup', function() {
+                const filter = searchInput.value.toLowerCase();
+                tableRows.forEach(row => {
+                    const managerName = row.querySelector('.manager-name').textContent.toLowerCase();
+                    row.style.display = managerName.includes(filter) ? '' : 'none';
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="banner">
+        Authorized Users Only
+    </div>
+    <div class="logo">
+        <img src="https://ok12static.oktacdn.com/fs/bco/1/fs04mdx4j4P0MX6MQ5d7" alt="Knovon Logo">
+    </div>
+    <div class="header">
+        Knovon for Business Manager
+    </div>
+    <div class="table-container">
+        <div class="search-container">
+            <input type="text" id="searchInput" class="form-control" placeholder="Search by Business Manager Name">
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Business Name</th>
+                    <th>Business Manager</th>
+                    <th>Employee Size</th>
+                    <th>Type of Business</th>
+                    <th>Business Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ronin Taylor</td>
+                    <td class="manager-name">Ronin Taylor</td>
+                    <td>50</td>
+                    <td>Technology</td>
+                    <td class="status-active">Active</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary"><i class="fas fa-box"></i> Send a Package</button>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Manage
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Email</a>
+                                    <a class="dropdown-item" href="#">Contact</a>
+                                    <a class="dropdown-item" href="#">Update</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Acme Corp</td>
+                    <td class="manager-name">John Doe</td>
+                    <td>200</td>
+                    <td>Manufacturing</td>
+                    <td class="status-active">Active</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary"><i class="fas fa-box"></i> Send a Package</button>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Manage
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Email</a>
+                                    <a class="dropdown-item" href="#">Contact</a>
+                                    <a class="dropdown-item" href="#">Update</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Beta Industries</td>
+                    <td class="manager-name">Jane Smith</td>
+                    <td>150</td>
+                    <td>Healthcare</td>
+                    <td class="status-inactive">Inactive</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary"><i class="fas fa-box"></i> Send a Package</button>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Manage
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Email</a>
+                                    <a class="dropdown-item" href="#">Contact</a>
+                                    <a class="dropdown-item" href="#">Update</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Gamma Solutions</td>
+                    <td class="manager-name">Richard Roe</td>
+                    <td>80</td>
+                    <td>Technology</td>
+                    <td class="status-active">Active</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary"><i class="fas fa-box"></i> Send a Package</button>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Manage
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Email</a>
+                                    <a class="dropdown-item" href="#">Contact</a>
+                                    <a class="dropdown-item" href="#">Update</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Delta Services</td>
+                    <td class="manager-name">Alice Johnson</td>
+                    <td>300</td>
+                    <td>Service</td>
+                    <td class="status-inactive">Inactive</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary"><i class="fas fa-box"></i> Send a Package</button>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Manage
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Email</a>
+                                    <a class="dropdown-item" href="#">Contact</a>
+                                    <a class="dropdown-item" href="#">Update</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Epsilon Enterprises</td>
+                    <td class="manager-name<td class="manager-name">Michael Brown</td>
                     <td>50</td>
                     <td>Retail</td>
                     <td class="status-active">Active</td>
