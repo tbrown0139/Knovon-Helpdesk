@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knovon for Business</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="apple-touch-icon" href="https://ok12static.oktacdn.com/fs/bco/1/fs04mdx4j4P0MX6MQ5d7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #ff4d4d;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 1.2em;
+            box-sizing: border-box;
+            word-wrap: break-word;
+        }
+
+        .logo {
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 150px;
+            height: auto;
+        }
+
+        .header {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        .form-container {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        .form-control {
+            margin: 10px 0;
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .btn-primary {
+            background-color: #007BFF;
+            border-color: #007BFF;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #aaa;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let currentStep = 0;
+            const formSteps = document.querySelectorAll('.form-step');
+            const nextButtons = document.querySelectorAll('.btn-next');
+            const prevButtons = document.querySelectorAll('.btn-prev');
+
+            function showStep(step) {
+                formSteps.forEach((formStep, index) => {
+                    formStep.classList.toggle('active', index === step);
+                });
+            }
+
+            nextButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    currentStep++;
+                    showStep(currentStep);
+                });
+            });
+
+            prevButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    currentStep--;
+                    showStep(currentStep);
+                });
+            });
+
+            showStep(currentStep);
+        });
+    </script>
+</head>
+<body>
+    <div class="banner">
+        Authorized Users Only
+    </div>
+    <div class="logo">
+        <img src="https://ok12static.oktacdn.com/fs/bco/1/fs04mdx4j4P0MX6MQ5d7" alt="Knovon Logo">
+    </div>
+    <div class="header">
+        Knovon for Business
+    </div>
+    <div class="form-container">
+        <div class="form-step active">
+            <h2>Step 1: Business Information</h2>
+            <input type="text" class="form-control" placeholder="Business Name">
+            <input type="text" class="form-control" placeholder="Business Domain">
+            <button class="btn btn-primary btn-next">Next</button>
+        </div>
+        <div class="form-step">
+            <h2>Step 2: Contact Information</h2>
+            <input type="email" class="form-control" placeholder="Business Email">
+            <input type="text" class="form-control" placeholder="Full Name">
+            <input type="text" class="form-control" placeholder="Title">
+            <button class="btn btn-secondary btn-prev">Previous</button>
+            <button class="btn btn-primary btn-next">Next</button>
+        </div>
+        <div class="form-step">
+            <h2>Step 3: Business Details</h2>
+            <select class="form-control">
+                <option value="" disabled selected>Type of Business</option>
+                <option value="Retail">Retail</option>
+                <option value="Wholesale">Wholesale</option>
+                <option value="Manufacturing">Manufacturing</option>
+                <option value="Service">Service</option>
+                <option value="Technology">Technology</option>
+                <option value="Healthcare">Healthcare</option>
+                <!-- Add more business categories as needed -->
+            </select>
+            <textarea class="form-control" placeholder="How would you describe your business?" rows="4"></textarea>
+            <button class="btn btn-secondary btn-prev">Previous</button>
+            <button class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+    <div class="footer">
+        &copy; 2024 Knovon. All rights reserved.
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
