@@ -74,16 +74,14 @@
             border: 1px solid #ccc;
         }
 
-        .btn-primary {
-            background-color: #007BFF;
-            border-color: #007BFF;
+        .btn-primary, .btn-secondary {
             border-radius: 10px;
             padding: 10px 20px;
             font-size: 1em;
             transition: background-color 0.3s;
         }
 
-        .btn-primary:hover {
+        .btn-primary:hover, .btn-secondary:hover {
             background-color: #0056b3;
             border-color: #0056b3;
         }
@@ -93,6 +91,55 @@
             font-size: 0.8em;
             color: #aaa;
         }
+
+        .selection-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f0f0;
+            border-radius: 15px;
+            padding: 20px;
+            cursor: pointer;
+            margin: 10px 0;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .selection-box:hover {
+            background-color: #e0e0e0;
+        }
+
+        .selection-box.active {
+            border: 2px solid #007BFF;
+            background-color: #d0e0ff;
+        }
+
+        .selection-box i {
+            font-size: 2em;
+            margin-right: 10px;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .box {
+                width: 80%;
+                margin: 10px 0;
+            }
+
+            .small-button {
+                width: 80%;
+                justify-content: center;
+            }
+        }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -100,6 +147,8 @@
             const formSteps = document.querySelectorAll('.form-step');
             const nextButtons = document.querySelectorAll('.btn-next');
             const prevButtons = document.querySelectorAll('.btn-prev');
+            const selectionBoxes = document.querySelectorAll('.selection-box');
+            const errorMessages = document.querySelectorAll('.error-message');
 
             function showStep(step) {
                 formSteps.forEach((formStep, index) => {
@@ -107,10 +156,28 @@
                 });
             }
 
+            function validateStep(step) {
+                let isValid = true;
+                const inputs = formSteps[step].querySelectorAll('input, select, textarea');
+
+                inputs.forEach(input => {
+                    if (!input.checkValidity()) {
+                        isValid = false;
+                        input.nextElementSibling.style.display = 'block';
+                    } else {
+                        input.nextElementSibling.style.display = 'none';
+                    }
+                });
+
+                return isValid;
+            }
+
             nextButtons.forEach(button => {
                 button.addEventListener('click', () => {
-                    currentStep++;
-                    showStep(currentStep);
+                    if (validateStep(currentStep)) {
+                        currentStep++;
+                        showStep(currentStep);
+                    }
                 });
             });
 
@@ -118,6 +185,13 @@
                 button.addEventListener('click', () => {
                     currentStep--;
                     showStep(currentStep);
+                });
+            });
+
+            selectionBoxes.forEach(box => {
+                box.addEventListener('click', () => {
+                    selectionBoxes.forEach(b => b.classList.remove('active'));
+                    box.classList.add('active');
                 });
             });
 
@@ -138,21 +212,39 @@
     <div class="form-container">
         <div class="form-step active">
             <h2>Step 1: Business Information</h2>
-            <input type="text" class="form-control" placeholder="Business Name">
-            <input type="text" class="form-control" placeholder="Business Domain">
+            <input type="text" class="form-control" placeholder="Business Name" required>
+            <div class="error-message">Please enter your business name.</div>
+            <input type="text" class="form-control" placeholder="Business Domain" required pattern="^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+            <div class="error-message">Please enter a valid domain (e.g., example.com).</div>
             <button class="btn btn-primary btn-next">Next</button>
         </div>
         <div class="form-step">
             <h2>Step 2: Contact Information</h2>
-            <input type="email" class="form-control" placeholder="Business Email">
-            <input type="text" class="form-control" placeholder="Full Name">
-            <input type="text" class="form-control" placeholder="Title">
+            <input type="email" class="form-control" placeholder="Business Email" required>
+            <div class="error-message">Please enter a valid email address.</div>
+            <input type="text" class="form-control" placeholder="Full Name" required>
+            <div class="error-message">Please enter your full name.</div>
+            <input type="text" class="form-control" placeholder="Title" required>
+            <div class="error-message">Please enter your title.</div>
             <button class="btn btn-secondary btn-prev">Previous</button>
             <button class="btn btn-primary btn-next">Next</button>
         </div>
         <div class="form-step">
-            <h2>Step 3: Business Details</h2>
-            <select class="form-control">
+            <h2>Step 3: Account Type</h2>
+            <div class="selection-box" id="vendor-box">
+                <i class="fas fa-truck"></i>
+                <h3>Vendor Account</h3>
+            </div>
+            <div class="selection-box" id="partner-box">
+                <i class="fas fa-handshake"></i>
+                <h3>Partner Account</h3>
+            </div>
+            <button class="btn btn-secondary btn-prev">Previous</button>
+            <button class="btn btn-primary btn-next">Next</button>
+        </div>
+        <div class="form-step">
+            <h2>Step 4: Business Details</h2>
+            <select class="form-control" required>
                 <option value="" disabled selected>Type of Business</option>
                 <option value="Retail">Retail</option>
                 <option value="Wholesale">Wholesale</option>
@@ -162,17 +254,10 @@
                 <option value="Healthcare">Healthcare</option>
                 <!-- Add more business categories as needed -->
             </select>
-            <textarea class="form-control" placeholder="How would you describe your business?" rows="4"></textarea>
+            <div class="error-message">Please select a business type.</div>
+            <textarea class="form-control" placeholder="How would you describe your business?" rows="4" required></textarea>
+            <div class="error-message">Please describe your business.</div>
             <button class="btn btn-secondary btn-prev">Previous</button>
             <button class="btn btn-primary">Submit</button>
         </div>
-    </div>
-    <div class="footer">
-        &copy; 2024 Knovon. All rights reserved.
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+   
